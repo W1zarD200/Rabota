@@ -1,32 +1,79 @@
-# Prerequisites
-*.d
+#include <iostream> 
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#include <ctime> 
 
-# Precompiled Headers
-*.gch
-*.pch
+#include <stdlib.h> 
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+using namespace std; 
 
-# Fortran module files
-*.mod
-*.smod
+ 
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+// функция формирования одномерного массива 
 
-# Executables
-*.exe
-*.out
-*.app
+void createArray (int mas[],int n) 
+
+{ 
+
+for (int i=0;i<n;i++) 
+
+mas[i]=rand()%31-15; 
+
+} 
+
+ 
+
+// функция вывода массива 
+
+void printArray (int mas[], int n) 
+
+{ 
+
+for (int i=0; i<n; i++) 
+
+cout << mas[i] << "   "; 
+
+} 
+
+ 
+
+// функция для нахождения процентного количества положительных элементов 
+
+int polAlem (int mas[], int n) 
+
+{ int kol=0; 
+
+for (int i=0; i<n; i++) 
+
+if (mas[i]>0) kol++; 
+
+return 100.*kol/n; 
+
+} 
+
+main () 
+
+{ 
+
+setlocale (LC_ALL,"Rus"); 
+
+srand (time(0)); 
+
+int p[20], e[25]; 
+
+cout << "Массив p" << endl; 
+
+createArray (p,20); 
+
+printArray(p,20); 
+
+cout << "\nКоличество процентных положительных элементов = " << polAlem(p,20) << '%' << endl; 
+
+cout << "\nМассив e" << endl; 
+
+createArray (e,25); 
+
+printArray(e,25); 
+
+cout << "\nКоличество процентных положительных элементов = " << polAlem(e,25) << '%'; 
+
+} 
